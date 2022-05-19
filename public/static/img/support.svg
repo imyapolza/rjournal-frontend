@@ -1,0 +1,22 @@
+<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="support-icon" style="--animation-duration:2000ms;">
+<g filter="url(#a)">
+<path d="M3.177 6.846C3.593 5.33 4.803 4 6.847 4c1.233 0 2.083.324 2.675.66.241.137.44.277.579.374.138-.097.337-.237.578-.373C11.272 4.324 12.12 4 13.354 4c2.045 0 3.254 1.331 3.67 2.846.41 1.49.111 3.295-.93 4.596-.962 1.199-2.286 2.277-3.399 3.049a17.55 17.55 0 0 1-1.486.931 6.992 6.992 0 0 1-.542.273 2.519 2.519 0 0 1-.231.09 1.095 1.095 0 0 1-.335.059c-.15 0-.28-.041-.336-.059a2.525 2.525 0 0 1-.231-.09 7.013 7.013 0 0 1-.542-.273 17.55 17.55 0 0 1-1.486-.931c-1.113-.772-2.437-1.85-3.398-3.049-1.042-1.301-1.34-3.106-.931-4.596Z" fill="url(#b)"></path></g> <defs>
+<linearGradient id="b" x1="10.101" y1="4" x2="10.101" y2="15.844" gradientUnits="userSpaceOnUse" class="support-icon__gradient">
+<stop stop-color="#fcae41">
+</stop> 
+<stop offset="1" stop-color="#dd9a3c">
+</stop>
+</linearGradient> 
+<filter id="a" x="3" y="4" width="15.201" height="13.844" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood> <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape">
+</feBlend> 
+<feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha">
+</feColorMatrix> <feOffset dx="1" dy="2"></feOffset> <feGaussianBlur stdDeviation="1.5">
+</feGaussianBlur> 
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1">
+</feComposite> 
+<feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.24 0">
+</feColorMatrix> 
+<feBlend in2="shape"></feBlend>
+</filter>
+</defs>
+</svg>
