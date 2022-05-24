@@ -11,7 +11,7 @@ export const Header = () => {
             <div className={styles.container__menu}>
               <img className={styles.img__menu} src="/static/img/menu.png" alt="menu" />
             </div>
-            <Link href="/ldfdffd">
+            <Link href="/">
               <a className={styles.logo}>
                 <img height={35} src="/static/img/logo.svg" alt="Logo" />
               </a>
@@ -28,7 +28,9 @@ export const Header = () => {
                 </a>
               </Link>
               <Link href="/donate">
-                <button className={styles.button__support}>Поддержать</button>
+                <a>
+                  <button className={styles.button__support}>Поддержать</button>
+                </a>
               </Link>
             </div>
           </li>
@@ -38,10 +40,14 @@ export const Header = () => {
                 <input className={styles.input} type="text" placeholder="Поиск" />
               </label>
             </div>
-            <button className={styles.button__create}>
-              <img className={styles.img__plus} src="./static/img/plus.png" alt="plus" />
-              <span>Создать</span>
-            </button>
+            <Link href="/write">
+              <a>
+                <button className={styles.button__create}>
+                  <img className={styles.img__plus} src="./static/img/plus.png" alt="plus" />
+                  <span>Создать</span>
+                </button>
+              </a>
+            </Link>
           </li>
           <li className={`${styles.list__item} ${styles.list__item__3}`}>
             <div className={styles.container__bell}>

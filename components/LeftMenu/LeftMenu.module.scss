@@ -1,0 +1,22 @@
+.list__buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 45px;
+  cursor: pointer;
+  border: 0;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+
+  &__container {
+    width: 50px;
+  }
+}
