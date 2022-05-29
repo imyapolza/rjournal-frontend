@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+
 .header {
   height: 60px;
   width: 100%;
@@ -35,11 +37,13 @@
 }
 
 .signIn {
+  font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
   display: flex;
   align-items: center;
   margin-right: 40px;
   padding-left: 16px;
-  font-weight: bold;
   cursor: pointer;
   height: 60px;
 }
@@ -104,10 +108,12 @@
 
 .button {
   &__support {
+    font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
     background: none;
     border: 0;
     color: rgb(230, 161, 64);
-    font-weight: 600;
     cursor: pointer;
   }
 
@@ -138,6 +144,9 @@
 }
 
 .input {
+  font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -163,11 +172,13 @@
 }
 
 .button__create {
+  font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   border-radius: 10px;
-  font-weight: bold;
   width: 115px;
   height: 40px;
   background-color: #fff;

@@ -4,6 +4,7 @@ import { LeftMenu } from '../components/LeftMenu';
 import { SideComments } from '../components/SideComments';
 
 interface MainLayoutProps {
+  children: React.ReactNode;
   hideComments?: boolean;
   hideMenu?: boolean;
   contentFullWidth?: boolean;

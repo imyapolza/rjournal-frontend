@@ -1,8 +1,24 @@
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './Header.module.scss';
+import { WriteModal } from '../WriteModal';
+import { useRouter } from 'next/router';
+import { setActiveModal } from '../../redux/slices/modal';
+import { selectActiveModal } from '../../redux/slices/modal';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 
 export const Header = () => {
+  let router = useRouter();
+  const dispatch = useAppDispatch();
+  const activeModal = useAppSelector(selectActiveModal);
+
+  const openModal = (e) => {
+    e.preventDefault();
+    dispatch(setActiveModal(true));
+    router.push('/write');
+  };
+
   return (
     <>
       <header className={styles.header}>
@@ -42,7 +58,7 @@ export const Header = () => {
             </div>
             <Link href="/write">
               <a>
-                <button className={styles.button__create}>
+                <button className={styles.button__create} onClick={openModal}>
                   <img className={styles.img__plus} src="./static/img/plus.png" alt="plus" />
                   <span>Создать</span>
                 </button>

@@ -9,8 +9,10 @@ import styles from '../styles/Home.module.css';
 // }
 
 const Home: NextPage = () => {
+  const posts = [{ id: 1, title: 'title 1', description: 'descr 1' }, {}, {}];
   return (
     <MainLayout>
+      sdsddsds
       {/* {posts.map((obj) => (
         <Post key={obj.id} id={obj.id} title={obj.title} description={obj.description} />
       ))} */}

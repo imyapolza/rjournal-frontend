@@ -1,0 +1,21 @@
+.img__arrow {
+  width: 15px;
+  height: 15px;
+}
+
+.comments__title {
+  font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  margin-right: 10px;
+
+  &__block {
+    height: 74px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.side__comments {
+  width: 340px;
+}
