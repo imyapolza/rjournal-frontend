@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import styles from './Header.module.scss';
-import { WriteModal } from '../WriteModal';
+import styles from './styles/header.module.scss';
+import { WriteModal } from './WriteModal';
 import { useRouter } from 'next/router';
-import { setActiveModal } from '../../redux/slices/modal';
-import { selectActiveModal } from '../../redux/slices/modal';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { setActiveModal } from '../redux/slices/modal';
+import { selectActiveModal } from '../redux/slices/modal';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
 
 export const Header = () => {
-  let router = useRouter();
+  const router = useRouter();
   const dispatch = useAppDispatch();
-  const activeModal = useAppSelector(selectActiveModal);
+  // const activeModal = useAppSelector(selectActiveModal);
 
   const openModal = (e) => {
     e.preventDefault();

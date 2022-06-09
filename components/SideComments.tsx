@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './SideComments.module.scss';
+import styles from './styles/side-comments.module.scss';
 
 export const SideComments = () => {
   return (

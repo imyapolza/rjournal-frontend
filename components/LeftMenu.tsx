@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import styles from './LeftMenu.module.scss';
+import styles from './styles/left-menu.module.scss';
 
 export const LeftMenu = () => {
   const menu = [
