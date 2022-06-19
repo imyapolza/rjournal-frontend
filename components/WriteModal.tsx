@@ -3,20 +3,27 @@ import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { selectActiveModal, setActiveModal } from '../redux/slices/modal';
+import dynamic from 'next/dynamic';
 import styles from './styles/write-modal.module.scss';
 
+const Editor = dynamic(() => import('./Editor').then((m) => m.Editor), { ssr: false });
+
 export const WriteModal: React.FC = () => {
-  const dispatch = useAppDispatch();
+  const [activeModal, setActiveModal] = useState<boolean>(false);
   const router = useRouter();
-  const [isBrowser, setIsBrowser] = useState(false);
-  const activeModal = useAppSelector(selectActiveModal);
-  const modalWrapperRef = useRef();
+  const [isBrowser, setIsBrowser] = useState<boolean>(false);
+  const modalWrapperRef = useRef<HTMLDivElement>(null);
+  const [blocks, setBlocks] = React.useState();
 
-  const backDropHandler = (e) => {
-    const isCloseBtn = e.target.getAttribute('data-close-btn');
+  useEffect(() => {
+    console.log(blocks);
+  }, [blocks]);
 
-    if (!modalWrapperRef?.current?.contains(e.target) || isCloseBtn) {
-      dispatch(setActiveModal(false));
+  const backDropHandler = (e): void => {
+    const isCloseClick = e.target.getAttribute('data-close-btn');
+
+    if (!modalWrapperRef?.current?.contains(e.target) || isCloseClick) {
+      setActiveModal(false);
       router.back();
     }
   };
@@ -26,14 +33,14 @@ export const WriteModal: React.FC = () => {
     window.addEventListener('click', backDropHandler);
 
     if (router.asPath.slice(1) === 'write' && !activeModal) {
-      dispatch(setActiveModal(true));
+      setActiveModal(true);
     }
 
     return () => window.removeEventListener('click', backDropHandler);
   }, []);
 
   const modalContent = activeModal ? (
-    <div className={styles.overlay}>
+    <div className={styles.overlay} data-overlay>
       <div className={styles.wrapper} ref={modalWrapperRef}>
         <div className={styles.modal}>
           <div className={styles.modal__header}>
@@ -48,13 +55,15 @@ export const WriteModal: React.FC = () => {
           </div>
           <div className={styles.modal__body}>
             <div className={styles.writing__header}>
-              <div>
+              <Editor onChange={(arr) => setBlocks(arr)} />
+              {/* <div>
                 <textarea
                   className={styles.modal__header__textarea}
                   placeholder="Заголовок"
-                  maxLength={60}></textarea>
-                <textarea className={styles.modal__body__textarea} placeholder="Текст"></textarea>
-              </div>
+                  maxLength={35}
+                />
+                <textarea className={styles.modal__body__textarea} placeholder="Текст" />
+              </div> */}
               <button className={styles.button__save}>Опубликовать</button>
             </div>
           </div>
