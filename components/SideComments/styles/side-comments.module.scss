@@ -1,6 +1,7 @@
 .img__arrow {
   width: 15px;
   height: 15px;
+  cursor: pointer;
 }
 
 .comments__title {
@@ -8,6 +9,7 @@
   font-weight: 500;
   font-size: 16px;
   margin-right: 10px;
+  cursor: pointer;
 
   &__block {
     height: 74px;
@@ -18,4 +20,8 @@
 
 .side__comments {
   width: 340px;
+
+  &__title__block {
+    cursor: pointer;
+  }
 }

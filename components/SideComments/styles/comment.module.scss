@@ -1,0 +1,29 @@
+.comment {
+  width: 350px;
+  margin-bottom: 30px;
+
+  &__avatar {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  &__block__name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+  }
+
+  &__name {
+    font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  &__comment {
+    font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 12px;
+  }
+}

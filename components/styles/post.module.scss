@@ -1,0 +1,34 @@
+.wrapper__post {
+  width: 640px;
+  height: 530px;
+  background: white;
+  border-radius: 8px;
+}
+
+.post {
+  margin-top: 15px;
+
+  &__title {
+    font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+    font-weight: 500;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 13px;
+    margin-top: 10px;
+    padding-top: 20px;
+  }
+
+  &__img {
+    width: 640px;
+    height: 360px;
+    cursor: pointer;
+  }
+
+  &__description {
+    font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+}
