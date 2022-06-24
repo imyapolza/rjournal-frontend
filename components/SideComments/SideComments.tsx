@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './styles/side-comments.module.scss';
 import Comment from './Comment';
 
@@ -27,15 +27,29 @@ export const SideComments = () => {
     },
   ];
 
+  const [isHidden, setIsHidden] = useState(false);
+
+  function handleComments() {
+    setIsHidden(!isHidden);
+  }
+
   return (
     <div className={styles.side__comments}>
-      <div className={styles.comments__title__block}>
+      <div
+        className={`${styles.comments__title__block} ${isHidden && styles.hidden__comments}`}
+        onClick={handleComments}>
         <h2 className={styles.comments__title}>Комментарии</h2>
         <img className={styles.img__arrow} src="./static/img/sideComments/next.png" alt="next" />
       </div>
-      {data.map((comment) => (
-        <Comment key={comment.id} {...comment} />
-      ))}
+      <div>
+        {!isHidden && data && (
+          <div>
+            {data.map((comment) => (
+              <Comment key={comment.id} {...comment} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
