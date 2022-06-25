@@ -4,14 +4,14 @@ import styles from './styles/left-menu.module.scss';
 
 export const LeftMenu = () => {
   const menu = [
-    { text: 'Лента', icon: './static/img/leftMenu/feed.png', path: '/' },
-    { text: 'Сообщения', icon: './static/img/leftMenu/comment.png', path: '/messages' },
-    { text: 'Рейтинг RJ', icon: './static/img/leftMenu/graph.png', path: '/rating' },
-    { text: 'Подписки', icon: './static/img/leftMenu/list.png', path: '/follows' },
+    { text: 'Лента', icon: '/static/img/leftMenu/feed.png', path: '/' },
+    { text: 'Сообщения', icon: '/static/img/leftMenu/comment.png', path: '/messages' },
+    { text: 'Рейтинг RJ', icon: '/static/img/leftMenu/graph.png', path: '/rating' },
+    { text: 'Подписки', icon: '/static/img/leftMenu/list.png', path: '/follows' },
   ];
 
   return (
-    <div>
+    <div className={styles.left__menu}>
       <ul className={styles.list__buttons}>
         {menu.map((item) => (
           <li key={item.icon}>

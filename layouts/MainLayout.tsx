@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { LeftMenu } from '../components/LeftMenu';
 import { SideComments } from '../components/SideComments/SideComments';
+import styles from './styles/main-layout.module.scss';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -18,16 +19,17 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   hideMenu,
   className,
 }) => {
+
   return (
-    <div className={clsx('wrapper', className)}>
+    <div className={styles.main__layout}>
       {!hideMenu && (
-        <div className="leftSide">
+        <div className={styles.leftSide}>
           <LeftMenu />
         </div>
       )}
-      <div className={clsx('content', { 'content--full': contentFullWidth })}>{children}</div>
+      <div className={clsx(styles.content, { 'content--full': contentFullWidth })}>{children}</div>
       {!hideComments && (
-        <div className="rightSide">
+        <div className={styles.rightSide}>
           <SideComments />
         </div>
       )}

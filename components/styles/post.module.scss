@@ -1,12 +1,17 @@
 .wrapper__post {
-  width: 640px;
-  height: 530px;
-  background: white;
+  width: 100%;
   border-radius: 8px;
+  background: white;
+  cursor: pointer;
 }
 
 .post {
-  margin-top: 15px;
+  width: 640px;
+  margin-top: 30px;
+
+  &__header {
+    margin: 0 auto;
+  }
 
   &__title {
     font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -15,13 +20,11 @@
     padding-left: 20px;
     padding-right: 20px;
     margin-bottom: 13px;
-    margin-top: 10px;
-    padding-top: 20px;
+    padding-top: 25px;
   }
 
   &__img {
-    width: 640px;
-    height: 360px;
+    width: 100%;
     cursor: pointer;
   }
 
@@ -29,6 +32,6 @@
     font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
     padding: 0 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
 }

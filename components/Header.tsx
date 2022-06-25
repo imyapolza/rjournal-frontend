@@ -11,11 +11,11 @@ import { useAppDispatch, useAppSelector } from '../redux/hooks';
 export const Header = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  // const activeModal = useAppSelector(selectActiveModal);
+  const activeModal = useAppSelector((state) => state.modal.activeModal);
 
   const openModal = (e) => {
     e.preventDefault();
-    dispatch(setActiveModal(true));
+    dispatch(selectActiveModal(true));
     router.push('/write');
   };
 
@@ -29,7 +29,7 @@ export const Header = () => {
             </div>
             <Link href="/">
               <a className={styles.logo}>
-                <img height={35} src="/static/img/logo.svg" alt="Logo" />
+                <img height={35} src={'/static/img/logo.svg'} alt="Logo" />
               </a>
             </Link>
             <div className={styles.support}>
@@ -59,7 +59,7 @@ export const Header = () => {
             <Link href="/write">
               <a>
                 <button className={styles.button__create} onClick={openModal}>
-                  <img className={styles.img__plus} src="./static/img/plus.png" alt="plus" />
+                  <img className={styles.img__plus} src="/./static/img/plus.png" alt="plus" />
                   <span>Создать</span>
                 </button>
               </a>
@@ -67,10 +67,10 @@ export const Header = () => {
           </li>
           <li className={`${styles.list__item} ${styles.list__item__3}`}>
             <div className={styles.container__bell}>
-              <img className={styles.img__bell} src="./static/img/bell.png" alt="bell" />
+              <img className={styles.img__bell} src="/./static/img/bell.png" alt="bell" />
             </div>
             <div className={styles.signIn}>
-              <img className={styles.img__user} src="./static/img/user.png" alt="user" />
+              <img className={styles.img__user} src="/./static/img/user.png" alt="user" />
               <span>Войти</span>
             </div>
           </li>

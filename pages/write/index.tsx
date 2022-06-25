@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { WriteModal } from '../../components/WriteModal';
 import { MainLayout } from '../../layouts/MainLayout';
 import { useAppSelector } from '../../redux/hooks';
-import { selectActiveModal } from '../../redux/slices/modal';
+import { selectActiveModal } from '../../redux/slices/comment';
 
 const WritePage: NextPage = () => {
   return (
