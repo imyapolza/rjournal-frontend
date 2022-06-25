@@ -6,8 +6,6 @@ const FullPost = () => {
   const router = useRouter();
   const { query } = useRouter();
 
-  console.log('query', query);
-
   return (
     <div className={styles.post__wrapper}>
       <div className={styles.post__header}>

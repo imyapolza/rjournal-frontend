@@ -25,7 +25,6 @@ export const WriteModal: React.FC = () => {
     if (!modalWrapperRef?.current?.contains(e.target) || isCloseClick) {
       setActiveModal(false);
       router.back();
-      document.body.style.overflow = 'auto';
     }
   };
 
@@ -35,7 +34,6 @@ export const WriteModal: React.FC = () => {
 
     if (router.asPath.slice(1) === 'write' && !activeModal) {
       setActiveModal(true);
-      document.body.style.overflow = 'hidden';
     }
 
     return () => window.removeEventListener('click', backDropHandler);

@@ -1,3 +1,7 @@
+@mixin family {
+  font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .wrapper__post {
   width: 100%;
   border-radius: 8px;
@@ -14,7 +18,7 @@
   }
 
   &__title {
-    font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    @include family;
     cursor: pointer;
     font-weight: 500;
     padding-left: 20px;
@@ -29,7 +33,7 @@
   }
 
   &__description {
-    font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    @include family;
     cursor: pointer;
     padding: 0 20px;
     margin-bottom: 30px;

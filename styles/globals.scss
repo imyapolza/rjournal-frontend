@@ -43,3 +43,7 @@ ul {
   height: 100vh;
   justify-content: space-between;
 }
+
+body {
+  overflow-y: overlay;
+}
