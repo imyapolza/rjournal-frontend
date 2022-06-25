@@ -4,33 +4,33 @@ import { RootState } from '../store';
 import { HYDRATE } from 'next-redux-wrapper';
 
 export interface UserState {
-  data?: ResponseUser | null;
+  isHidden?: boolean;
 }
 
 const initialState: UserState = {
-  data: null,
+  isHidden: false,
 };
 
-export const userSlice = createSlice({
-  name: 'user',
+export const commentSlice = createSlice({
+  name: 'comment',
   initialState,
   reducers: {
-    setUserData: (state, action: PayloadAction<ResponseUser>) => {
-      state.data = action.payload;
+    setIsHidden: (state, action: PayloadAction<boolean>) => {
+      state.isHidden = action.payload;
     },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
       return {
         ...state,
-        ...action.payload.user,
+        ...action.payload.isHidden,
       };
     },
   },
 });
 
-export const { setUserData } = userSlice.actions;
+export const { setIsHidden } = commentSlice.actions;
 
-export const selectUserData = (state: RootState) => state.user.data;
+export const isHidden = (state: RootState) => state.comment.isHidden;
 
-export const userReducer = userSlice.reducer;
+export const commentReducer = commentSlice.reducer;

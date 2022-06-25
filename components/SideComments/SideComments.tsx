@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import styles from './styles/side-comments.module.scss';
 import Comment from './Comment';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { setIsHidden } from '../../redux/slices/comment';
 
 export const SideComments = () => {
+  const dispatch = useAppDispatch();
+  const isHidden = useAppSelector((state) => state.comment.isHidden);
+
   const data = [
     {
       id: 1,
@@ -27,10 +32,8 @@ export const SideComments = () => {
     },
   ];
 
-  const [isHidden, setIsHidden] = useState(false);
-
   function handleComments() {
-    setIsHidden(!isHidden);
+    dispatch(setIsHidden(!isHidden));
   }
 
   return (
@@ -39,7 +42,7 @@ export const SideComments = () => {
         className={`${styles.comments__title__block} ${isHidden && styles.hidden__comments}`}
         onClick={handleComments}>
         <h2 className={styles.comments__title}>Комментарии</h2>
-        <img className={styles.img__arrow} src="./static/img/sideComments/next.png" alt="next" />
+        <img className={styles.img__arrow} src="/./static/img/sideComments/next.png" alt="next" />
       </div>
       <div>
         {!isHidden && data && (

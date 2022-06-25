@@ -4,33 +4,33 @@ import { RootState } from '../store';
 import { HYDRATE } from 'next-redux-wrapper';
 
 export interface UserState {
-  active?: boolean;
+  activeModal?: boolean;
 }
 
 const initialState: UserState = {
-  active: false,
+  activeModal: false,
 };
 
 export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    setActiveModal: (state, action: PayloadAction<boolean>) => {
-      state.active = action.payload;
+    selectActiveModal: (state, action: PayloadAction<boolean>) => {
+      state.activeModal = action.payload;
     },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
       return {
         ...state,
-        ...action.payload.active,
+        ...action.payload.activeModal,
       };
     },
   },
 });
 
-export const { setActiveModal } = modalSlice.actions;
+export const { selectActiveModal } = modalSlice.actions;
 
-export const selectActiveModal = (state: RootState) => state.modal.active;
+export const activeModal = (state: RootState) => state.modal.activeModal;
 
 export const modalReducer = modalSlice.reducer;

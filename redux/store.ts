@@ -1,13 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
-
-import { userReducer } from './slices/user';
+import { commentReducer } from './slices/comment';
 import { modalReducer } from './slices/modal';
 
 export function makeStore() {
   return configureStore({
     reducer: {
-      user: userReducer,
+      comment: commentReducer,
       modal: modalReducer,
     },
   });
