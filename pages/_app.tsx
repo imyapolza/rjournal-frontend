@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import { store } from '../redux/store';
 import Head from 'next/head';
 
+import '../components/styles/animation-styles/post-comments.scss';
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>

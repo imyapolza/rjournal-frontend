@@ -1,0 +1,50 @@
+@mixin family {
+  font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.comment {
+  &__wrapper {
+    width: 100%;
+    height: 100px;
+    margin-top: 30px;
+    height: 130px;
+  }
+}
+
+.avatar {
+  border-radius: 50px;
+  width: 30px;
+  height: 30px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.fullname {
+  @include family;
+  margin-left: 10px;
+  width: 130px;
+}
+
+.createdAt {
+  font-size: 14px;
+  color: #909090;
+}
+
+.text {
+  @include family;
+  margin-top: 12px;
+}
+
+.btn {
+  &__reply {
+    background: none;
+    padding: 0;
+    color: #686868;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+}
