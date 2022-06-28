@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { createWrapper } from 'next-redux-wrapper';
+import { authModalReducer } from './slices/authModal';
 import { commentReducer } from './slices/comment';
 import { modalReducer } from './slices/modal';
 
@@ -8,6 +9,7 @@ export function makeStore() {
     reducer: {
       comment: commentReducer,
       modal: modalReducer,
+      authModal: authModalReducer,
     },
   });
 }
