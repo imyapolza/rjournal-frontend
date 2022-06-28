@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { selectActiveModal, setActiveModal } from '../redux/slices/comment';
 import dynamic from 'next/dynamic';
 import styles from './styles/write-modal.module.scss';
 

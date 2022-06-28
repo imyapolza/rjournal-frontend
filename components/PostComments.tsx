@@ -15,7 +15,7 @@ const PostComments = () => {
   const [inProp, setInProp] = useState(false);
 
   return (
-    <div className={styles.comments} style={{ height: '1500px' }}>
+    <div className={styles.comments}>
       <div className={styles.comments__wrapper}>
         <div className={styles.comments__length}>{`${
           data.comments.popular.length + data.comments.new.length
@@ -71,7 +71,7 @@ const PostComments = () => {
           <div>
             {!activeButton &&
               data.comments.popular.map((comment, index) => (
-                <Comment key={Date.now()} comment={comment} />
+                <Comment key={index} comment={comment} />
               ))}
           </div>
         </CSSTransition>
@@ -85,7 +85,7 @@ const PostComments = () => {
           <div>
             {activeButton &&
               data.comments.new.map((comment, index) => (
-                <Comment key={Date.now()} comment={comment} />
+                <Comment key={index} comment={comment} />
               ))}
           </div>
         </CSSTransition>

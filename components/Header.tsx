@@ -4,19 +4,25 @@ import Image from 'next/image';
 import styles from './styles/header.module.scss';
 import { WriteModal } from './WriteModal';
 import { useRouter } from 'next/router';
-import { setActiveModal } from '../redux/slices/modal';
 import { selectActiveModal } from '../redux/slices/modal';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import AuthModal from './AuthModal';
 
 export const Header = () => {
+  const [authVisible, setAuthVisible] = useState(false);
+
   const router = useRouter();
   const dispatch = useAppDispatch();
   const activeModal = useAppSelector((state) => state.modal.activeModal);
 
-  const openModal = (e) => {
+  const openCreateModal = (e) => {
     e.preventDefault();
     dispatch(selectActiveModal(true));
     router.push('/write');
+  };
+
+  const openAuthModal = () => {
+    setAuthVisible(true);
   };
 
   return (
@@ -58,7 +64,7 @@ export const Header = () => {
             </div>
             <Link href="/write">
               <a>
-                <button className={styles.button__create} onClick={openModal}>
+                <button className={styles.button__create} onClick={openCreateModal}>
                   <img className={styles.img__plus} src="/./static/img/plus.png" alt="plus" />
                   <span>Создать</span>
                 </button>
@@ -69,12 +75,13 @@ export const Header = () => {
             <div className={styles.container__bell}>
               <img className={styles.img__bell} src="/./static/img/bell.png" alt="bell" />
             </div>
-            <div className={styles.signIn}>
+            <div className={styles.signIn} onClick={openAuthModal}>
               <img className={styles.img__user} src="/./static/img/user.png" alt="user" />
               <span>Войти</span>
             </div>
           </li>
         </ul>
+        {authVisible && <AuthModal />}
       </header>
     </>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
+import { MainLayout } from '../layouts/MainLayout';
 
 const Messages = () => {
-  return <div>messages</div>;
+  return <MainLayout>messages</MainLayout>;
 };
 
 export default Messages;

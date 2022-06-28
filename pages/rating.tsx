@@ -1,7 +1,8 @@
 import React from 'react';
+import { MainLayout } from '../layouts/MainLayout';
 
 const Rating = () => {
-  return <div>rating</div>;
+  return <MainLayout>rating</MainLayout>;
 };
 
 export default Rating;

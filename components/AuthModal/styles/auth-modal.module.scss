@@ -1,0 +1,106 @@
+@mixin family {
+  font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.auth__modal {
+  position: absolute;
+  overflow-y: overlay;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &__wrapper {
+    background: white;
+    padding: 45px 80px;
+    padding-bottom: 0;
+    width: 450px;
+    height: 360px;
+    border-radius: 15px;
+  }
+}
+
+.header {
+  &__text {
+    @include family;
+    font-weight: 500;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.body {
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    width: 290px;
+  }
+
+  &__vk {
+    margin-bottom: 15px;
+  }
+
+  &__google {
+    margin-bottom: 15px;
+  }
+}
+
+.btns {
+  background: none;
+  height: 48px;
+  @include family;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%), inset 0 0 0 1px rgb(0 0 0 / 6%),
+    inset 0 -1px 0 rgb(0 0 0 / 12%), inset 1px 0 0 rgb(0 0 0 / 6%), inset -1px 0 0 rgb(0 0 0 / 6%);
+  border-radius: 8px;
+  display: flex;
+  padding: 5px 20px;
+  align-items: center;
+}
+
+.img {
+  &__button {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__twitter {
+    margin-left: 15px;
+  }
+
+  &__apple {
+    margin-left: 15px;
+  }
+}
+
+.button__text {
+  margin-left: 10px;
+  margin: 0 auto;
+}
+
+.bottom {
+  &__buttons {
+    display: flex;
+    margin-top: 15px;
+  }
+
+  &__button {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.arrow__back {
+  width: 24px;
+  height: 24px;
+  margin-right: 15px;
+  cursor: pointer;
+}

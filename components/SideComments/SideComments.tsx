@@ -42,7 +42,7 @@ export const SideComments = () => {
         className={`${styles.comments__title__block} ${isHidden && styles.hidden__comments}`}
         onClick={handleComments}>
         <h2 className={styles.comments__title}>Комментарии</h2>
-        <img className={styles.img__arrow} src="/./static/img/sideComments/next.png" alt="next" />
+        <img className={styles.img__arrow} src="/./static/img/side-comments/next.png" alt="next" />
       </div>
       <div>
         {!isHidden && data && (
