@@ -16,7 +16,7 @@
 
   &__wrapper {
     background: white;
-    padding: 45px 80px;
+    padding: 40px 80px;
     padding-bottom: 0;
     width: 450px;
     height: 360px;
@@ -31,6 +31,7 @@
     font-size: 20px;
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
 }
 
@@ -55,7 +56,6 @@
   background: none;
   height: 48px;
   @include family;
-  font-weight: 500;
   cursor: pointer;
   box-shadow: 0 1px 2px rgb(0 0 0 / 8%), inset 0 0 0 1px rgb(0 0 0 / 6%),
     inset 0 -1px 0 rgb(0 0 0 / 12%), inset 1px 0 0 rgb(0 0 0 / 6%), inset -1px 0 0 rgb(0 0 0 / 6%);
@@ -63,6 +63,8 @@
   display: flex;
   padding: 5px 20px;
   align-items: center;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .img {
@@ -88,7 +90,7 @@
 .bottom {
   &__buttons {
     display: flex;
-    margin-top: 15px;
+    margin-top: 17px;
   }
 
   &__button {
@@ -103,4 +105,59 @@
   height: 24px;
   margin-right: 15px;
   cursor: pointer;
+}
+
+.login {
+  &__register__form {
+    height: 50px;
+    width: 100%;
+    border: 0;
+    background: #f5f5f5;
+    border-radius: 8px;
+    outline: none;
+    padding: 0 20px;
+    font-size: 17px;
+  }
+
+  &__password {
+    margin-top: 15px;
+  }
+
+  &__fullName {
+    margin-bottom: 15px;
+  }
+
+  &__register__button {
+    background-color: #4683d9;
+    cursor: pointer;
+    width: 100%;
+    color: white;
+    height: 48px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-size: 17px;
+  }
+}
+
+.form__block {
+  margin-top: 23px;
+}
+
+.register {
+  &__button {
+    background: none;
+    color: #3766a9;
+    margin-top: 25px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+
+  &__button:hover {
+    color: red;
+    transition: 0.2s;
+  }
+}
+
+.errorInput {
+  border: 1px solid #ff0a0a;
 }

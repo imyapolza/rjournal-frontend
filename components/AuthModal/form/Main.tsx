@@ -4,15 +4,10 @@ import styles from '../styles/auth-modal.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
 import { setFormType } from '../../../redux/slices/authModal';
 
-const MainForm = () => {
-  const dispatch = useAppDispatch();
-
-  const openLoginForm = () => {
-    dispatch(setFormType('login'));
-  };
-
+const MainForm = ({ openLoginForm }) => {
   return (
     <>
+      <div className={styles.header__text}>Вход в TJ</div>
       <div className={styles.body__buttons}>
         <button className={clsx(styles.body__vk, styles.btns)}>
           <img className={styles.img__button} src={'/./static/img/auth-modal/vk.png'} alt="vk" />{' '}

@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { setFormType } from '../../redux/slices/authModal';
 import MainForm from './form/Main';
+import LoginForm from './form/Login';
 import styles from './styles/auth-modal.module.scss';
+import RegisterForm from './form/Register';
 
 const AuthModal = () => {
   const dispatch = useAppDispatch();
@@ -20,23 +22,22 @@ const AuthModal = () => {
     dispatch(setFormType('main'));
   };
 
+  const openLoginForm = () => {
+    dispatch(setFormType('login'));
+  };
+
+  const openRegisterForm = () => {
+    dispatch(setFormType('register'));
+  };
+
   const modalContent = (
     <div className={styles.auth__modal}>
       <div className={styles.auth__modal__wrapper}>
-        <div className={styles.auth__modal__header}>
-          {formType === 'main' && <div className={styles.header__text}>Вход в TJ</div>}
-          {formType === 'login' && (
-            <div className={styles.header__text}>
-              <img
-                className={styles.arrow__back}
-                onClick={openMainForm}
-                src="/./static/img/auth-modal/arrow-back.png"
-                alt="arrow-back"></img>
-              Войти через почту
-            </div>
-          )}
-        </div>
-        <div className={styles.auth__modal__body}>{formType === 'main' && <MainForm />}</div>
+        {formType === 'main' && <MainForm openLoginForm={openLoginForm} />}
+        {formType === 'login' && (
+          <LoginForm openMainForm={openMainForm} openRegisterForm={openRegisterForm} />
+        )}
+        {formType === 'register' && <RegisterForm openMainForm={openMainForm} />}
       </div>
     </div>
   );
