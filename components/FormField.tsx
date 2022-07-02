@@ -6,7 +6,7 @@ interface FormFieldProps {
   name: string;
   className: string;
   label: string;
-  errorMessage: string;
+  errorMessage?: string;
 }
 
 const FormField: React.FC<FormFieldProps> = ({ name, className, label, errorMessage }) => {

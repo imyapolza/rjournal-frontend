@@ -13,6 +13,11 @@ const RegisterForm = ({ openMainForm }) => {
   });
 
   const onSubmit = (data) => console.log(data);
+  const formErrors = form.formState.errors;
+
+  React.useEffect(() => {
+    console.log('formErrors', formErrors);
+  }, [formErrors]);
 
   return (
     <>
@@ -27,42 +32,22 @@ const RegisterForm = ({ openMainForm }) => {
           </div>
           <div className={styles.form__block}>
             <FormField
-              className={clsx(
-                styles.login__register__fullName,
-                styles.login__register__form,
-                form.formState.errors.fullName?.message && styles.errorInput,
-              )}
-              name="fullName"
+              className={styles.modal__form}
+              name="fullname"
               label="Имя и фамилия"
-              errorMessage={
-                form.formState.errors.fullName?.message &&
-                `${form.formState.errors.fullName?.message}`
-              }
+              errorMessage={formErrors.fullname && `${formErrors.fullname.message}`}
             />
             <FormField
-              className={clsx(
-                styles.login__register__email,
-                styles.login__register__form,
-                form.formState.errors.email?.message && styles.errorInput,
-              )}
+              className={clsx(styles.modal__form, styles.modal__form__margin)}
               name="email"
               label="Введите Email"
-              errorMessage={
-                form.formState.errors.email?.message && `${form.formState.errors.email?.message}`
-              }
+              errorMessage={formErrors.email && `${formErrors.email.message}`}
             />
             <FormField
-              className={clsx(
-                styles.login__register__password,
-                styles.login__register__form,
-                form.formState.errors.password?.message && styles.errorInput,
-              )}
+              className={clsx(styles.modal__form, styles.modal__form__margin)}
               name="password"
               label="Введите пароль"
-              errorMessage={
-                form.formState.errors.password?.message &&
-                `${form.formState.errors.password?.message}`
-              }
+              errorMessage={formErrors.password && `${formErrors.password.message}`}
             />
             <button className={styles.login__register__button} type="submit">
               Зарегистрироваться

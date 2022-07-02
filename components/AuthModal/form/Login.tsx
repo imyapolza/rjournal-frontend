@@ -13,6 +13,7 @@ const LoginForm = ({ openMainForm, openRegisterForm }) => {
   });
 
   const onSubmit = (data) => console.log(data);
+  const formErrors = form.formState.errors;
 
   return (
     <>
@@ -27,32 +28,21 @@ const LoginForm = ({ openMainForm, openRegisterForm }) => {
           </div>
           <div className={styles.form__block}>
             <FormField
-              className={clsx(
-                styles.login__email,
-                styles.login__form,
-                form.formState.errors.email?.message && styles.errorInput,
-              )}
+              className={clsx(styles.modal__form)}
               name="email"
               label="Введите Email"
-              errorMessage={
-                form.formState.errors.email?.message && `${form.formState.errors.email?.message}`
-              }
+              errorMessage={formErrors.email && `${formErrors.email.message}`}
             />
             <FormField
-              className={clsx(
-                styles.login__password,
-                styles.login__form,
-                form.formState.errors.password?.message && styles.errorInput,
-              )}
+              className={clsx(styles.modal__form, styles.login__password)}
               name="password"
               label="Введите пароль"
-              errorMessage={
-                form.formState.errors.password?.message &&
-                `${form.formState.errors.password?.message}`
-              }
+              errorMessage={formErrors.password && `${formErrors.password.message}`}
             />
           </div>
-          <button className={styles.login__register__button} type="submit">
+          <button
+            className={clsx(styles.login__register__button, styles.login__margin__btn)}
+            type="submit">
             Войти
           </button>
           <button className={styles.register__button} onClick={openRegisterForm}>
