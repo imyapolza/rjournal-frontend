@@ -15,7 +15,7 @@ export type ResponseUser = {
   fullName: string;
   id: number;
   commentsCount?: number;
-  token: string;
+  access_token: string;
   updatedAt: string;
 };
 

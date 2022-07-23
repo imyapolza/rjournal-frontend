@@ -1,10 +1,13 @@
 import clsx from 'clsx';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { setCookie } from 'nookies';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { RegisterFormSchema } from '../../../utils/schemas/validations';
 import styles from '../styles/auth-modal.module.scss';
 import FormField from '../../FormField';
+import { UserApi } from '../../../utils/api';
+import { CreateUserDto } from '../../../utils/api/types';
 
 const RegisterForm = ({ openMainForm }) => {
   const form = useForm({
@@ -12,12 +15,20 @@ const RegisterForm = ({ openMainForm }) => {
     resolver: yupResolver(RegisterFormSchema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (dto: CreateUserDto) => {
+    try {
+      const data = await UserApi.register(dto);
+      setCookie(null, 'access_token', data.access_token, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: '/',
+      });
+    } catch (err) {
+      alert('Ошибка при регистрации');
+      console.warn('Register error', err);
+    }
+  };
   const formErrors = form.formState.errors;
-
-  React.useEffect(() => {
-    console.log('formErrors', formErrors);
-  }, [formErrors]);
+  const disableBtn = !form.formState.isValid || form.formState.isSubmitting;
 
   return (
     <>
@@ -32,24 +43,39 @@ const RegisterForm = ({ openMainForm }) => {
           </div>
           <div className={styles.form__block}>
             <FormField
-              className={styles.modal__form}
-              name="fullname"
+              className={`${styles.modal__form} ${
+                formErrors.fullName && styles.modal__form__isNotValid
+              }`}
+              name="fullName"
               label="Имя и фамилия"
-              errorMessage={formErrors.fullname && `${formErrors.fullname.message}`}
+              errorMessage={formErrors.fullName && `${formErrors.fullName.message}`}
             />
             <FormField
-              className={clsx(styles.modal__form, styles.modal__form__margin)}
+              className={clsx(
+                styles.modal__form,
+                styles.modal__form__margin,
+                `${formErrors.email && styles.modal__form__isNotValid}`,
+              )}
               name="email"
               label="Введите Email"
               errorMessage={formErrors.email && `${formErrors.email.message}`}
             />
             <FormField
-              className={clsx(styles.modal__form, styles.modal__form__margin)}
+              className={clsx(
+                styles.modal__form,
+                styles.modal__form__margin,
+                `${formErrors.password && styles.modal__form__isNotValid}`,
+              )}
               name="password"
               label="Введите пароль"
               errorMessage={formErrors.password && `${formErrors.password.message}`}
             />
-            <button className={styles.login__register__button} type="submit">
+            <button
+              className={`${styles.login__register__button} ${
+                disableBtn ? styles.disable__btn : null
+              }`}
+              disabled={disableBtn}
+              type="submit">
               Зарегистрироваться
             </button>
           </div>

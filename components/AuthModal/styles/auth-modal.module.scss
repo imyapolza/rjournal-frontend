@@ -146,6 +146,10 @@
   }
 }
 
+.disable__btn {
+  opacity: 0.5;
+}
+
 .errorInput {
   border: 1px solid #ff0a0a;
 }
@@ -162,5 +166,9 @@
 
   &__margin {
     margin-top: 15px;
+  }
+
+  &__isNotValid {
+    border: 1px solid red;
   }
 }
