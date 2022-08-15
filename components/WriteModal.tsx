@@ -1,44 +1,24 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import dynamic from 'next/dynamic';
 import styles from './styles/write-modal.module.scss';
+import useCloseModal from '../hooks/useCloseModal';
 
 const Editor = dynamic(() => import('./Editor').then((m) => m.Editor), { ssr: false });
 
 export const WriteModal: React.FC = () => {
-  const [activeModal, setActiveModal] = useState<boolean>(false);
   const router = useRouter();
-  const [isBrowser, setIsBrowser] = useState<boolean>(false);
-  const modalWrapperRef = useRef<HTMLDivElement>(null);
+
   const [blocks, setBlocks] = React.useState();
 
   useEffect(() => {
     console.log(blocks);
   }, [blocks]);
 
-  const backDropHandler = (e): void => {
-    const isCloseClick = e.target.getAttribute('data-close-btn');
+  const { modalWrapperRef, isBrowser } = useCloseModal();
 
-    if (!modalWrapperRef?.current?.contains(e.target) || isCloseClick) {
-      setActiveModal(false);
-      router.back();
-    }
-  };
-
-  useEffect(() => {
-    setIsBrowser(true);
-    window.addEventListener('click', backDropHandler);
-
-    if (router.asPath.slice(1) === 'write' && !activeModal) {
-      setActiveModal(true);
-    }
-
-    return () => window.removeEventListener('click', backDropHandler);
-  }, []);
-
-  const modalContent = activeModal ? (
+  const modalContent = (
     <div className={styles.overlay} data-overlay>
       <div className={styles.wrapper} ref={modalWrapperRef}>
         <div className={styles.modal}>
@@ -69,7 +49,7 @@ export const WriteModal: React.FC = () => {
         </div>
       </div>
     </div>
-  ) : null;
+  );
 
   if (isBrowser) {
     return ReactDOM.createPortal(modalContent, document.getElementById('modal-root'));

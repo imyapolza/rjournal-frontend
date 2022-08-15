@@ -1,20 +1,23 @@
-import axios from 'axios';
-import { CreateUserDto, LoginDto, ResponseUser } from './types';
+import axios from "axios";
+import { CreateUserDto, LoginDto, ResponseUser } from "./types";
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8888/',
+  baseURL: "http://localhost:8888/",
 });
 
 export const UserApi = {
   async register(dto: CreateUserDto): Promise<ResponseUser> {
     const { data } = await instance.post<CreateUserDto, { data: ResponseUser }>(
-      '/auth/register',
+      "/auth/register",
       dto,
+      { withCredentials: true }
     );
     return data;
   },
   async login(dto: LoginDto) {
-    const { data } = await instance.post('/auth/register', dto);
+    const { data } = await instance.post("/auth/login", dto, {
+      withCredentials: true,
+    });
     return data;
   },
 };

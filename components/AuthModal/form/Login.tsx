@@ -5,6 +5,8 @@ import styles from '../styles/auth-modal.module.scss';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginFormSchema } from '../../../utils/schemas/validations';
 import FormField from '../../FormField';
+import { LoginDto } from '../../../utils/api/types';
+import { UserApi } from '../../../utils/api';
 
 const LoginForm = ({ openMainForm, openRegisterForm }) => {
   const form = useForm({
@@ -12,7 +14,14 @@ const LoginForm = ({ openMainForm, openRegisterForm }) => {
     resolver: yupResolver(LoginFormSchema),
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (dto: LoginDto) => {
+     try {
+      const data = await UserApi.login(dto);
+    } catch (err) {
+      alert('Ошибка при аутентификации');
+      console.warn('Auth error', err);
+    }
+  };
   const formErrors = form.formState.errors;
 
   return (

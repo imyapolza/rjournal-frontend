@@ -1,29 +1,7 @@
-import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import styles from './styles/header.module.scss';
-import { WriteModal } from './WriteModal';
-import { useRouter } from 'next/router';
-import { selectActiveModal } from '../redux/slices/modal';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import AuthModal from './AuthModal';
 
 export const Header = () => {
-  const [authVisible, setAuthVisible] = useState(false);
-
-  const router = useRouter();
-  const dispatch = useAppDispatch();
-  const activeModal = useAppSelector((state) => state.modal.activeModal);
-
-  const openCreateModal = (e) => {
-    e.preventDefault();
-    dispatch(selectActiveModal(true));
-    router.push('/write');
-  };
-
-  const openAuthModal = () => {
-    setAuthVisible(true);
-  };
 
   return (
     <>
@@ -63,25 +41,24 @@ export const Header = () => {
               </label>
             </div>
             <Link href="/write">
-              <a>
-                <button className={styles.button__create} onClick={openCreateModal}>
+                <button className={styles.button__create}>
                   <img className={styles.img__plus} src="/./static/img/plus.png" alt="plus" />
                   <span>Создать</span>
                 </button>
-              </a>
             </Link>
           </li>
           <li className={`${styles.list__item} ${styles.list__item__3}`}>
             <div className={styles.container__bell}>
               <img className={styles.img__bell} src="/./static/img/bell.png" alt="bell" />
             </div>
-            <div className={styles.signIn} onClick={openAuthModal}>
+             <Link href="/auth">
+            <div className={styles.signIn}>
               <img className={styles.img__user} src="/./static/img/user.png" alt="user" />
               <span>Войти</span>
             </div>
+            </Link>
           </li>
         </ul>
-        {authVisible && <AuthModal />}
       </header>
     </>
   );

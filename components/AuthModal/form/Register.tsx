@@ -18,10 +18,6 @@ const RegisterForm = ({ openMainForm }) => {
   const onSubmit = async (dto: CreateUserDto) => {
     try {
       const data = await UserApi.register(dto);
-      setCookie(null, 'access_token', data.access_token, {
-        maxAge: 30 * 24 * 60 * 60,
-        path: '/',
-      });
     } catch (err) {
       alert('Ошибка при регистрации');
       console.warn('Register error', err);
