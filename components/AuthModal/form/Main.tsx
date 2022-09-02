@@ -2,7 +2,6 @@ import clsx from 'clsx';
 import React from 'react';
 import styles from '../styles/auth-modal.module.scss';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
-import { setFormType } from '../../../redux/slices/authModal';
 
 const MainForm = ({ openLoginForm }) => {
   return (
