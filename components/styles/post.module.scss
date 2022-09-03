@@ -1,5 +1,5 @@
 @mixin family {
-  font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Roboto", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .wrapper__post {
@@ -7,6 +7,7 @@
   border-radius: 8px;
   background: white;
   cursor: pointer;
+  padding: 20px;
 }
 
 .post {
@@ -21,10 +22,8 @@
     @include family;
     cursor: pointer;
     font-weight: 500;
-    padding-left: 20px;
-    padding-right: 20px;
     margin-bottom: 13px;
-    padding-top: 25px;
+    font-size: 35px;
   }
 
   &__img {
@@ -35,7 +34,13 @@
   &__description {
     @include family;
     cursor: pointer;
-    padding: 0 20px;
-    margin-bottom: 30px;
+    font-size: 17px;
+    line-height: 30px;
+  }
+
+  &__text {
+    @include family;
+    word-wrap: break-word;
+    margin-bottom: 15px;
   }
 }

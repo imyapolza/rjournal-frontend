@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginFormSchema } from '../../../utils/schemas/validations';
 import FormField from '../../FormField';
 import { LoginDto } from '../../../utils/api/types';
-import { UserApi } from '../../../utils/api';
+import { Api } from '../../../utils/api';
 
 const LoginForm = ({ openMainForm, openRegisterForm }) => {
   const form = useForm({
@@ -16,7 +16,7 @@ const LoginForm = ({ openMainForm, openRegisterForm }) => {
 
   const onSubmit = async (dto: LoginDto) => {
      try {
-      const data = await UserApi.login(dto);
+      const data = await Api().user.login(dto);
     } catch (err) {
       alert('Ошибка при аутентификации');
       console.warn('Auth error', err);

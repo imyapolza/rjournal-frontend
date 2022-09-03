@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import dynamic from "next/dynamic";
 import styles from "./styles/write-modal.module.scss";
 import useCloseModal from "../hooks/useCloseModal";
-import { PostApi } from "../utils/api";
+import { Api } from "../utils/api";
 
 const Editor = dynamic(() => import("./Editor").then((m) => m.Editor), {
   ssr: false,
@@ -25,7 +25,6 @@ export const WriteModal: React.FC = () => {
   }, [title]);
 
   useEffect(() => {
-    console.log("blocks", blocks);
     setIsBlocksEmpty(Object.keys(blocks).length == 0 ? true : false);
   }, [blocks]);
 
@@ -34,10 +33,15 @@ export const WriteModal: React.FC = () => {
   const onSendBlocks = async () => {
     setIsLoading(true);
     if (!titleIsEmpty && !blocksIsEmpty) {
-      const data = await PostApi.create({ title, body: blocks });
+      const data = await Api.PostApi.create({ title, body: blocks });
       setIsLoading(false);
+      router.push("/");
     }
     setIsLoading(false);
+  };
+
+  const onCloseModal = () => {
+    router.back();
   };
 
   const modalContent = (
@@ -45,7 +49,7 @@ export const WriteModal: React.FC = () => {
       <div className={styles.wrapper} ref={modalWrapperRef}>
         <div className={styles.modal}>
           <div className={styles.modal__header}>
-            <button className={styles.button__close}>
+            <button className={styles.button__close} onClick={onCloseModal}>
               <img
                 className={styles.close__icon}
                 src="/static/img/close.png"
@@ -65,18 +69,14 @@ export const WriteModal: React.FC = () => {
                 onChange={(arr) => setBlocks(arr)}
                 placeholder={"Введите текст вашей статьи"}
               />
-              {titleIsEmpty && (
-                <div className={styles.validation}>Заголовок обязательный</div>
-              )}
-              {blocksIsEmpty && (
-                <div className={styles.validation}>Текст обязательный</div>
-              )}
               <button
                 className={styles.button__save}
                 onClick={onSendBlocks}
-                disabled={isLoading ? true : null}
+                disabled={
+                  isLoading || blocksIsEmpty || titleIsEmpty ? true : null
+                }
               >
-                {isLoading ? "Загрузка... " : "Опубликовать"}
+                {isLoading ? "Публикация... " : "Опубликовать"}
               </button>
             </div>
           </div>

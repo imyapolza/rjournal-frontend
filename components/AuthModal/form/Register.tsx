@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterFormSchema } from "../../../utils/schemas/validations";
 import styles from "../styles/auth-modal.module.scss";
 import FormField from "../../FormField";
-import { UserApi } from "../../../utils/api";
+import { Api } from "../../../utils/api";
 import { CreateUserDto } from "../../../utils/api/types";
 import { useRouter } from "next/router";
 import { setIsAuth } from "../../../redux/slices/auth";
@@ -27,7 +27,7 @@ const RegisterForm = ({ openMainForm }) => {
   const onSubmit = async (dto: CreateUserDto) => {
     try {
       setIsLoading(true);
-      const data = await UserApi.register(dto);
+      const data = await Api().user.register(dto);
       setIsLoading(false);
       dispatch(setIsAuth(true));
       router.push("/");
