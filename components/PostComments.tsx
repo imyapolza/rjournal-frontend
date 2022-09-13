@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import styles from './styles/post-comments.module.scss';
-import Comment from './Comment';
-import data from '../data';
-import clsx from 'clsx';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import React, { useState, useEffect } from "react";
+import styles from "./styles/post-comments.module.scss";
+import Comment from "./Comment";
+import data from "../data";
+import clsx from "clsx";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 const PostComments = () => {
   const [activeButton, setActiveButton] = useState(false);
 
-  console.log('activeButton', activeButton);
+  console.log("activeButton", activeButton);
 
-  console.log('data', data);
+  console.log("data", data);
 
   const [inProp, setInProp] = useState(false);
 
@@ -25,21 +25,28 @@ const PostComments = () => {
             className={clsx(
               styles.button__popular,
               styles.button,
-              !activeButton && styles.button__active,
+              !activeButton && styles.button__active
             )}
-            onClick={() => setActiveButton(false)}>
+            onClick={() => setActiveButton(false)}
+          >
             популярные
           </button>
           <button
-            className={clsx(styles.button, activeButton && styles.button__active, styles.buttons)}
-            onClick={() => setActiveButton(true)}>
+            className={clsx(
+              styles.button,
+              activeButton && styles.button__active,
+              styles.buttons
+            )}
+            onClick={() => setActiveButton(true)}
+          >
             по порядку
           </button>
           <div className={styles.border}>
             <div
               className={`${styles.border__active} ${
                 activeButton ? styles.button__order : styles.button__popular
-              }`}></div>
+              }`}
+            ></div>
           </div>
           <input
             className={styles.comment__create}
@@ -67,7 +74,8 @@ const PostComments = () => {
           timeout={500}
           classNames="alert"
           onExiting={() => setActiveButton(true)}
-          unmountOnExit>
+          unmountOnExit
+        >
           <div>
             {!activeButton &&
               data.comments.popular.map((comment, index) => (
@@ -81,7 +89,8 @@ const PostComments = () => {
           timeout={500}
           classNames="alert_2"
           onExiting={() => setActiveButton(false)}
-          unmountOnExit>
+          unmountOnExit
+        >
           <div>
             {activeButton &&
               data.comments.new.map((comment, index) => (

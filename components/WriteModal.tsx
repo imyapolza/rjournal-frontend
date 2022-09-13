@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import styles from "./styles/write-modal.module.scss";
 import useCloseModal from "../hooks/useCloseModal";
 import { Api } from "../utils/api";
+import { useAppSelector } from "../redux/hooks";
 
 const Editor = dynamic(() => import("./Editor").then((m) => m.Editor), {
   ssr: false,
@@ -12,6 +13,8 @@ const Editor = dynamic(() => import("./Editor").then((m) => m.Editor), {
 
 export const WriteModal: React.FC = () => {
   const router = useRouter();
+
+  const changePost = useAppSelector((state) => state.changePost);
 
   const [blocks, setBlocks] = React.useState([]);
   const [title, setTitle] = React.useState<string>("");
@@ -33,7 +36,7 @@ export const WriteModal: React.FC = () => {
   const onSendBlocks = async () => {
     setIsLoading(true);
     if (!titleIsEmpty && !blocksIsEmpty) {
-      const data = await Api.PostApi.create({ title, body: blocks });
+      const data = await Api().post.create({ title, body: blocks });
       setIsLoading(false);
       router.push("/");
     }
@@ -64,10 +67,12 @@ export const WriteModal: React.FC = () => {
                 className={styles.title}
                 placeholder={"Введите заголовок"}
                 onChange={(e: any) => setTitle(e.target.value)}
+                defaultValue={changePost.title}
               />
               <Editor
                 onChange={(arr) => setBlocks(arr)}
                 placeholder={"Введите текст вашей статьи"}
+                initialBlocks={[{ type: "paragraph", body: "начальное" }]}
               />
               <button
                 className={styles.button__save}

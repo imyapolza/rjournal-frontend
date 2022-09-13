@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import { MainLayout } from "../layouts/MainLayout";
-import styles from "../styles/Home.module.css";
+import styles from "../components/styles/home.module.scss";
 import Post from "../components/Post";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -14,10 +14,13 @@ import { parse } from "path";
 
 const Home: NextPage = () => {
   const [posts, setPosts] = useState([]);
+  const [isLoadingPosts, setLoadingPosts] = useState(false);
 
   useEffect(() => {
     const getPosts = async () => {
+      setLoadingPosts(true);
       const data = await Api().post.getPosts();
+      setLoadingPosts(false);
       setPosts(data);
     };
 
@@ -29,6 +32,13 @@ const Home: NextPage = () => {
   return (
     <>
       <MainLayout>
+        {posts.length === 0 && !isLoadingPosts && (
+          <div className={styles.default}>Постов нет. Добавьте его первым!</div>
+        )}
+
+        {isLoadingPosts && (
+          <div className={styles.default}>Посты загружаются...</div>
+        )}
         {posts &&
           posts.map((obj, idx) => (
             <Post

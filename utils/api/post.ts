@@ -22,4 +22,11 @@ export const PostApi = (instance: AxiosInstance) => ({
     });
     return data;
   },
+
+  async deletePost(id: number): Promise<any> {
+    const { data } = await instance.delete(`/posts/${id}`, {
+      withCredentials: true,
+    });
+    return data;
+  },
 });

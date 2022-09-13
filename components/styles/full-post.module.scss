@@ -7,7 +7,7 @@
   }
 
   &__header {
-    font-family: 'Roboto', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Roboto", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
     margin: 0 auto;
     padding: 30px 0;
     width: 640px;
@@ -19,10 +19,33 @@
   }
 
   &__title {
-    margin-bottom: 12px;
+    margin-bottom: 30px;
+    word-break: break-all;
+    line-height: 50px;
   }
 
   &__description {
     font-size: 17px;
+    font-family: "Roboto", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    cursor: pointer;
+    font-size: 17px;
+    line-height: 30px;
+  }
+
+  &__description > div {
+    word-break: break-all;
+    margin-bottom: 15px;
+  }
+}
+
+.button {
+  &__delete {
+    color: red;
+    cursor: pointer;
+    width: 100px;
+    font-size: 17px;
+    height: 30px;
+    background-color: #fff4e2;
+    border-radius: 20px;
   }
 }
